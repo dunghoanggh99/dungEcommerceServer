@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
 
 namespace dungEcommerce.BLL.IRepository
 {
-    internal interface IGenericRepository<TEntity,TModel> : IDisposable where TEntity : class, new() where TModel : class
+    public interface IGenericRepository<TEntity, TModel> : IDisposable where TEntity : class, new() where TModel : class
     {
-        TModel GetById(Guid Id);
+        Task<TModel> GetById(Guid Id);
         IEnumerable<TModel> GetAll();
         IEnumerable<TModel> Find(Expression<Func<TModel, bool>> expression);
         void Add(TModel model);

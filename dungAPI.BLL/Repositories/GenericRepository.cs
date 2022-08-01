@@ -2,12 +2,7 @@
 using dungAPI.DAL.Context;
 using dungEcommerce.BLL.IRepository;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dungEcommerce.BLL.Repositories
 {
@@ -47,9 +42,10 @@ namespace dungEcommerce.BLL.Repositories
             return _mapper.Map<IEnumerable<TModel>>(_context.Set<TEntity>().ToList());
         }
 
-        public TModel GetById(Guid Id)
+        public async Task<TModel> GetById(Guid Id)
         {
-            return _mapper.Map<TModel>(_context.Set<TEntity>().FindAsync(Id));
+            var model= await _context.Set<TEntity>().FindAsync(Id);
+            return _mapper.Map<TModel>(model);
         }
 
         public void Remove(TModel model)
