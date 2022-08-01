@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\dungAPI.DAL\dungEcommerce.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
