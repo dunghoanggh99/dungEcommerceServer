@@ -5,7 +5,7 @@ namespace dungAPI.DAL.Context
 {
     public class dungContext : DbContext
     {
-        public dungContext(DbContextOptions<dungContext> options):base(options)
+        public dungContext(DbContextOptions<dungContext> options) : base(options)
         {
 
         }

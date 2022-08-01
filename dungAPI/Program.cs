@@ -1,4 +1,6 @@
 using dungAPI.DAL.Context;
+using dungEcommerce.BLL.IRepositories;
+using dungEcommerce.BLL.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<dungContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("dungConnectionString")));
+
+builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
