@@ -1,14 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using dungAPI.DAL.Entities.Concrea;
+using Microsoft.EntityFrameworkCore;
 
 namespace dungAPI.DAL.Context
 {
-    public class dungContext:DbContext
+    public class dungContext : DbContext
     {
-        private connectionString
+        public dungContext(DbContextOptions<dungContext> options):base(options)
+        {
+
+        }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Coupon> Coupons { get; set; }
+        public DbSet<Gallery> Galleries { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderSale> OrderSales { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }

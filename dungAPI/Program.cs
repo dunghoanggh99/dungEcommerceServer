@@ -1,3 +1,6 @@
+using dungAPI.DAL.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<dungContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("dungConnectionString")));
 
 var app = builder.Build();
 
